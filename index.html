@@ -17,7 +17,7 @@
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1B2B;--ink:#E8EEF5;--muted:#9AABBD;--line:#273A52;--accent:#7FA0FF;--on-accent:#0F1B2B}}
 :root[data-theme="dark"]{--bg:#0F1B2B;--ink:#E8EEF5;--muted:#9AABBD;--line:#273A52;--accent:#7FA0FF;--on-accent:#0F1B2B}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 "Hind Siliguri",system-ui,sans-serif}
 main,header,footer{max-width:46rem;margin:0 auto;padding:0 1.25rem}
@@ -58,6 +58,10 @@ footer{padding:2rem 1.25rem 3rem;color:var(--muted);border-top:1px solid var(--l
 .slider-btns{display:flex;gap:.5rem}
 .slider-btns button{background:none;border:1px solid var(--line);color:var(--ink);padding:.25rem .8rem;border-radius:99px;font:inherit;cursor:pointer}
 .slider-btns button:hover{border-color:var(--accent);color:var(--accent)}
+.copy-btn{margin-left:.6rem;background:none;border:1px solid var(--line);color:var(--ink);padding:.2rem .75rem;border-radius:99px;font:inherit;font-size:.88rem;cursor:pointer}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+.top-link{margin-left:auto;color:var(--muted);text-decoration:none;font-size:.95rem}
+.top-link:hover{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -144,12 +148,12 @@ footer{padding:2rem 1.25rem 3rem;color:var(--muted);border-top:1px solid var(--l
 <section id="contact">
 <h2>Contact</h2>
 <p>The best way to reach me is by email.</p>
-<p><a href="mailto:faysaleftia@gmail.com">faysaleftia@gmail.com</a></p>
+<p><a href="mailto:faysaleftia@gmail.com">faysaleftia@gmail.com</a> <button type="button" class="copy-btn" id="copy-email">Copy</button></p>
 <p><a class="btn" href="https://wa.me/8801332615089?text=Hi%20Faisu" target="_blank" rel="noopener">Message me on WhatsApp</a></p>
 <p><a href="https://www.facebook.com/faisu5089">Facebook</a> · <a href="https://www.instagram.com/faisu_133//">Instagram</a> · <a href="https://www.linkedin.com/in/zunaid-evan-5490473a9/">LinkedIn</a></p>
 </section>
 </main>
-<footer>© 2026 Faisu</footer>
+<footer style="display:flex;align-items:center;gap:1rem"><span>© 2026 Faisu</span><a href="#" class="top-link">Back to top</a></footer>
 <script>
 (function(){
 var bn={
@@ -186,6 +190,9 @@ var bn={
 "Photography":"ফটোগ্রাফি",
 "Capturing everyday moments, street scenes, and visual stories around me.":"চারপাশের প্রতিদিনের মুহূর্ত, দৃশ্য আর ছবির গল্প ধরে রাখা।",
 "Games & Curiosity":"গেমস ও কৌতূহল",
+"Copy":"কপি",
+"Copied":"কপি হয়েছে",
+"Back to top":"উপরে যান"
 "Enjoying video games in free time and picking up new skills one step at a time.":"অবসর সময়ে ভিডিও গেম খেলা আর ধাপে ধাপে নতুন কিছু শেখা।"
 };
 function norm(s){return s.replace(/\s+/g," ").replace(/[’‘]/g,"'").trim();}
@@ -232,6 +239,37 @@ prev.addEventListener("click",function(){idx=(idx-1+slides.length)%slides.length
 next.addEventListener("click",function(){idx=(idx+1)%slides.length;render();});
 var langBtn=document.getElementById("lang");
 if(langBtn)langBtn.addEventListener("click",function(){setTimeout(render,0);});
+})();
+</script>
+<script>
+(function(){
+var btn=document.getElementById("copy-email");
+if(!btn)return;
+var email="faysaleftia@gmail.com",timer=null;
+btn.addEventListener("click",function(){
+var isBn=document.documentElement.lang==="bn";
+var doneText=isBn?"কপি হয়েছে":"Copied";
+var resetText=isBn?"কপি":"Copy";
+function showDone(){
+btn.textContent=doneText;
+clearTimeout(timer);
+timer=setTimeout(function(){btn.textContent=resetText;},1800);
+}
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(email).then(showDone).catch(fallbackCopy);
+}else{
+fallbackCopy();
+}
+function fallbackCopy(){
+var ta=document.createElement("textarea");
+ta.value=email;
+document.body.appendChild(ta);
+ta.select();
+try{document.execCommand("copy");}catch(e){}
+document.body.removeChild(ta);
+showDone();
+}
+});
 })();
 </script>
 </body>
