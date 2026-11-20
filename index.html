@@ -170,15 +170,32 @@ footer{padding:2rem 1.25rem 3rem;color:var(--muted);border-top:1px solid var(--l
 <footer style="display:flex;align-items:center;gap:1rem"><span>© 2026 Faisu</span><a href="#" class="top-link">Back to top</a></footer>
 <script>
 (function(){
+<script>
+(function(){
 var bn={
-"About":"আমার সম্পর্কে","Skills":"দক্ষতা","Experience":"কাজের অভিজ্ঞতা","Education":"শিক্ষা","Projects":"প্রজেক্ট","Contact":"যোগাযোগ",
+"About":"আমার সম্পর্কে",
+"Skills":"দক্ষতা",
+"Interests":"আগ্রহ",
+"Photos":"ছবি",
+"Education":"শিক্ষা",
+"Experience":"কাজের অভিজ্ঞতা",
+"Projects":"প্রজেক্ট",
+"Contact":"যোগাযোগ",
 "I'm a student who is learning to build websites and apps. This page is where my work lives.":"আমি একজন শিক্ষার্থী, ওয়েবসাইট ও অ্যাপ বানানো শিখছি। আমার কাজগুলো এই পেজে থাকে।",
 "Get in touch":"যোগাযোগ করুন",
 "Download CV":"সিভি ডাউনলোড",
-"About me":"আমার সম্পর্কে","Work Experience":"কাজের অভিজ্ঞতা",
+"About me":"আমার সম্পর্কে",
+"Work Experience":"কাজের অভিজ্ঞতা",
 "Hi, I'm Faisu. I'm studying at Dhaka Central University in Dhaka, Bangladesh. I enjoy video games, football, photography and reading, and I'm currently learning HTML, CSS and JavaScript.":"হ্যালো, আমি Faisu। আমি ঢাকা, বাংলাদেশের ঢাকা সেন্ট্রাল ইউনিভার্সিটিতে পড়ছি। ভিডিও গেম, ফুটবল, ফটোগ্রাফি আর বই পড়তে আমার ভালো লাগে, আর এখন HTML, CSS ও JavaScript শিখছি।",
 "I'm an honours student in the Department of Islamic Studies. This website is my first project, and I want to keep learning and improving my web skills.":"আমি ইসলামিক স্টাডিজ বিভাগের অনার্সের শিক্ষার্থী। এই ওয়েবসাইট আমার প্রথম প্রজেক্ট, আর আমি শিখতে থাকতে এবং আমার ওয়েব দক্ষতা আরও উন্নত করতে চাই।",
-"Digital Marketing":"ডিজিটাল মার্কেটিং","Social Media Marketing":"সোশ্যাল মিডিয়া মার্কেটিং","Facebook Marketing":"ফেসবুক মার্কেটিং","Instagram Marketing":"ইনস্টাগ্রাম মার্কেটিং","LinkedIn Marketing":"লিংকডইন মার্কেটিং","Email Marketing":"ইমেইল মার্কেটিং","Bangla":"বাংলা","English":"ইংরেজি",
+"Digital Marketing":"ডিজিটাল মার্কেটিং",
+"Social Media Marketing":"সোশ্যাল মিডিয়া মার্কেটিং",
+"Facebook Marketing":"ফেসবুক মার্কেটিং",
+"Instagram Marketing":"ইনস্টাগ্রাম মার্কেটিং",
+"LinkedIn Marketing":"লিংকডইন মার্কেটিং",
+"Email Marketing":"ইমেইল মার্কেটিং",
+"Bangla":"বাংলা",
+"English":"ইংরেজি",
 "Digital Marketing. I run social media and email marketing across Facebook, Instagram, LinkedIn and Gmail.":"ডিজিটাল মার্কেটিং। আমি ফেসবুক, ইনস্টাগ্রাম, লিংকডইন ও জিমেইলে সোশ্যাল মিডিয়া ও ইমেইল মার্কেটিং করি।",
 "Dhaka Central University":"ঢাকা সেন্ট্রাল ইউনিভার্সিটি",
 "Honours, Department of Islamic Studies (Session 2023-24, 2nd year)":"অনার্স, ইসলামিক স্টাডিজ বিভাগ (সেশন ২০২৩-২৪, ২য় বর্ষ)",
@@ -190,11 +207,9 @@ var bn={
 "The best way to reach me is by email.":"আমার সাথে যোগাযোগের সবচেয়ে ভালো উপায় ইমেইল।",
 "Message me on WhatsApp":"হোয়াটসঅ্যাপে মেসেজ করুন",
 "© 2026 Faisu":"© ২০২৬ Faisu",
-"Photos":"ছবি",
 "A few natural scenes and quiet moments around me.":"আমার চারপাশের কয়েকটি প্রাকৃতিক দৃশ্য ও শান্ত মুহূর্ত।",
 "Prev":"আগে",
 "Next":"পরে",
-"Interests":"আগ্রহ",
 "Interests & Personal Touch":"আগ্রহ ও ব্যক্তিগত দিক",
 "A few things close to my heart beyond studies and work.":"পড়াশোনা ও কাজের বাইরে যে বিষয়গুলো আমার খুব কাছের।",
 "Football":"ফুটবল",
@@ -204,6 +219,7 @@ var bn={
 "Photography":"ফটোগ্রাফি",
 "Capturing everyday moments, street scenes, and visual stories around me.":"চারপাশের প্রতিদিনের মুহূর্ত, দৃশ্য আর ছবির গল্প ধরে রাখা।",
 "Games & Curiosity":"গেমস ও কৌতূহল",
+"Enjoying video games in free time and picking up new skills one step at a time.":"অবসর সময়ে ভিডিও গেম খেলা আর ধাপে ধাপে নতুন কিছু শেখা।",
 "Copy":"কপি",
 "Copied":"কপি হয়েছে",
 "Back to top":"উপরে যান"
@@ -212,7 +228,7 @@ function norm(s){return s.replace(/\s+/g," ").replace(/[’‘]/g,"'").trim();}
 var map={};for(var k in bn){map[norm(k)]=bn[k];}
 var digits="০১২৩৪৫৬৭৮৯";
 var items=[];
-document.querySelectorAll("header a,h2,h3,p,li,.btn,.when,footer").forEach(function(el){
+document.querySelectorAll("header a,h2,h3,p,li,.btn,.when,footer span,footer a,.copy-btn").forEach(function(el){
 if(el.children.length>0)return;
 var en=el.textContent,t=null;
 if(el.classList.contains("when")){t=en.replace(/\d/g,function(d){return digits[d];}).replace("now","এখন");}
@@ -224,15 +240,13 @@ try{cur=localStorage.getItem("lang")==="bn"?"bn":"en";}catch(e){}
 function apply(l){
 items.forEach(function(i){i.el.textContent=l==="bn"?i.bn:i.en;});
 document.documentElement.lang=l;
-btn.textContent=l==="bn"?"English":"বাংলা";
+if(btn)btn.textContent=l==="bn"?"English":"বাংলা";
 try{localStorage.setItem("lang",l);}catch(e){}
 }
 apply(cur);
-btn.addEventListener("click",function(){cur=cur==="bn"?"en":"bn";apply(cur);});
+if(btn)btn.addEventListener("click",function(){cur=cur==="bn"?"en":"bn";apply(cur);});
 })();
 </script>
-<script>
-(function(){
 var slides=[
 {src:"pic1.jpg",alt:"Soft daylight and green leaves",en:"Green & Daylight",bn:"সবুজ ও দিনের আলো"},
 {src:"pic2.jpg",alt:"Open sky and calm horizon",en:"Open Sky",bn:"খোলা আকাশ"},
