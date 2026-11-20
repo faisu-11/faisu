@@ -42,11 +42,15 @@ p{max-width:38rem;margin:0 0 1rem}
 @media (max-width:34rem){.row{grid-template-columns:1fr}}
 footer{padding:2rem 1.25rem 3rem;color:var(--muted);border-top:1px solid var(--line)}
 .photo{width:10rem;height:10rem;border-radius:50%;object-fit:cover;margin:0 0 1.5rem;border:3px solid var(--line)}
+#lang{margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);padding:.15rem .9rem;border-radius:99px;font:inherit;cursor:pointer}
+#lang:hover{border-color:var(--accent)}
+#lang:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
 <header>
 <a href="#about">About</a><a href="#skills">Skills</a><a href="#education"><a href="#experience">Experience</a>Education</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+<button id="lang" type="button">বাংলা</button>
 </header>
 <main>
 <main>
@@ -91,5 +95,50 @@ footer{padding:2rem 1.25rem 3rem;color:var(--muted);border-top:1px solid var(--l
 </section>
 </main>
 <footer>© 2026 Faisu</footer>
+<script>
+(function(){
+var bn={
+"About":"আমার সম্পর্কে","Skills":"দক্ষতা","Experience":"কাজের অভিজ্ঞতা","Education":"শিক্ষা","Projects":"প্রজেক্ট","Contact":"যোগাযোগ",
+"I'm a student who is learning to build websites and apps. This page is where my work lives.":"আমি একজন শিক্ষার্থী, ওয়েবসাইট ও অ্যাপ বানানো শিখছি। আমার কাজগুলো এই পেজে থাকে।",
+"Get in touch":"যোগাযোগ করুন",
+"About me":"আমার সম্পর্কে","Work Experience":"কাজের অভিজ্ঞতা",
+"Hi, I'm Faisu. I'm studying at Dhaka Central University in Dhaka, Bangladesh. I enjoy video games, football, photography and reading, and I'm currently learning HTML, CSS and JavaScript.":"হ্যালো, আমি Faisu। আমি ঢাকা, বাংলাদেশের ঢাকা সেন্ট্রাল ইউনিভার্সিটিতে পড়ছি। ভিডিও গেম, ফুটবল, ফটোগ্রাফি আর বই পড়তে আমার ভালো লাগে, আর এখন HTML, CSS ও JavaScript শিখছি।",
+"I'm an honours student in the Department of Islamic Studies. This website is my first project, and I want to keep learning and improving my web skills.":"আমি ইসলামিক স্টাডিজ বিভাগের অনার্সের শিক্ষার্থী। এই ওয়েবসাইট আমার প্রথম প্রজেক্ট, আর আমি শিখতে থাকতে এবং আমার ওয়েব দক্ষতা আরও উন্নত করতে চাই।",
+"Digital Marketing":"ডিজিটাল মার্কেটিং","Social Media Marketing":"সোশ্যাল মিডিয়া মার্কেটিং","Facebook Marketing":"ফেসবুক মার্কেটিং","Instagram Marketing":"ইনস্টাগ্রাম মার্কেটিং","LinkedIn Marketing":"লিংকডইন মার্কেটিং","Email Marketing":"ইমেইল মার্কেটিং","Bangla":"বাংলা","English":"ইংরেজি",
+"Digital Marketing. I run social media and email marketing across Facebook, Instagram, LinkedIn and Gmail.":"ডিজিটাল মার্কেটিং। আমি ফেসবুক, ইনস্টাগ্রাম, লিংকডইন ও জিমেইলে সোশ্যাল মিডিয়া ও ইমেইল মার্কেটিং করি।",
+"Dhaka Central University":"ঢাকা সেন্ট্রাল ইউনিভার্সিটি",
+"Honours, Department of Islamic Studies (Session 2023-24, 2nd year)":"অনার্স, ইসলামিক স্টাডিজ বিভাগ (সেশন ২০২৩-২৪, ২য় বর্ষ)",
+"Tushkhali Mohiuddin Maharaj College":"তুষখালী মহিউদ্দিন মহারাজ কলেজ",
+"Higher Secondary Certificate (HSC), Humanities, 2023 batch":"উচ্চ মাধ্যমিক (এইচএসসি), মানবিক বিভাগ, ২০২৩ ব্যাচ",
+"This portfolio website":"এই পোর্টফোলিও ওয়েবসাইট",
+"My first website. Built with HTML and CSS.":"আমার প্রথম ওয়েবসাইট। HTML ও CSS দিয়ে বানানো।",
+"My first website, built with HTML and CSS and hosted on GitHub Pages.":"আমার প্রথম ওয়েবসাইট, HTML ও CSS দিয়ে বানানো এবং GitHub Pages-এ হোস্ট করা।",
+"The best way to reach me is by email.":"আমার সাথে যোগাযোগের সবচেয়ে ভালো উপায় ইমেইল।",
+"Message me on WhatsApp":"হোয়াটসঅ্যাপে মেসেজ করুন",
+"© 2026 Faisu":"© ২০২৬ Faisu"
+};
+function norm(s){return s.replace(/\s+/g," ").replace(/[’‘]/g,"'").trim();}
+var map={};for(var k in bn){map[norm(k)]=bn[k];}
+var digits="০১২৩৪৫৬৭৮৯";
+var items=[];
+document.querySelectorAll("header a,h2,h3,p,li,.btn,.when,footer").forEach(function(el){
+if(el.children.length>0)return;
+var en=el.textContent,t=null;
+if(el.classList.contains("when")){t=en.replace(/\d/g,function(d){return digits[d];}).replace("now","এখন");}
+else if(map[norm(en)]){t=map[norm(en)];}
+if(t!==null)items.push({el:el,en:en,bn:t});
+});
+var btn=document.getElementById("lang"),cur="en";
+try{cur=localStorage.getItem("lang")==="bn"?"bn":"en";}catch(e){}
+function apply(l){
+items.forEach(function(i){i.el.textContent=l==="bn"?i.bn:i.en;});
+document.documentElement.lang=l;
+btn.textContent=l==="bn"?"English":"বাংলা";
+try{localStorage.setItem("lang",l);}catch(e){}
+}
+apply(cur);
+btn.addEventListener("click",function(){cur=cur==="bn"?"en":"bn";apply(cur);});
+})();
+</script>
 </body>
 </html>
